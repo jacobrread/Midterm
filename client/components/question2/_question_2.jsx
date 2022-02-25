@@ -9,5 +9,34 @@ export const Question2 = () => {
     { id: 7, name: 'Gerald Truman', email: 'gerald@usu.edu', isAdmin: false },
     { id: 8, name: 'Harry Styles', email: 'harry@usu.edu', isAdmin: false },
   ];
-  return <div>Render your users here!</div>;
+
+  return (
+    <div>
+      {users.map((user) => {
+        return <div>{User(user)}</div>;
+      })}
+    </div>
+  );
+};
+
+const User = (user) => {
+  if (user.isAdmin) {
+    return (
+      <>
+        <div key={user.id} className="m-2">
+          <p style={{ color: 'green' }}>Name: {user.name}</p>
+          <p style={{ color: 'green' }}>Email: {user.email}</p>
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <div key={user.id} className="m-2">
+          <p>Name: {user.name}</p>
+          <p>Email: {user.email}</p>
+        </div>
+      </>
+    );
+  }
 };
