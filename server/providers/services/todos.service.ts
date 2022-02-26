@@ -13,4 +13,19 @@ export class TodosService {
   findAll() {
     return this.todosRepository.find();
   }
+
+  create(todo: Todo) {
+    return this.todosRepository.save(todo);
+  }
+
+  update(todo: Todo) {
+    todo.isComplete = !todo.isComplete;
+    this.todosRepository.save(todo);
+  }
+
+  // async update(id: number) {
+  //   const todo = await this.todosRepository.findOne(id);
+  //   todo.isComplete = !todo.isComplete;
+  //   this.todosRepository.save(todo);
+  // }
 }

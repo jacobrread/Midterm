@@ -13,7 +13,7 @@ export const Question2 = () => {
   return (
     <div>
       {users.map((user) => {
-        return <div>{User(user)}</div>;
+        return <div key={user.id}>{User(user)}</div>;
       })}
     </div>
   );
@@ -23,7 +23,7 @@ const User = (user) => {
   if (user.isAdmin) {
     return (
       <>
-        <div key={user.id} className="m-2">
+        <div className="m-2">
           <p style={{ color: 'green' }}>Name: {user.name}</p>
           <p style={{ color: 'green' }}>Email: {user.email}</p>
         </div>
@@ -32,7 +32,7 @@ const User = (user) => {
   } else {
     return (
       <>
-        <div key={user.id} className="m-2">
+        <div className="m-2">
           <p>Name: {user.name}</p>
           <p>Email: {user.email}</p>
         </div>
