@@ -30,8 +30,8 @@ export class Question5Controller {
   }
 
   @Put('/todos/:id') // Update todo
-  public update(@Param('todo') todoId: number) {
-    const updatedTodo = this.todosService.update(todoId);
+  public async update(@Param('todo') todoId: number) {
+    const updatedTodo = await this.todosService.update(todoId);
     return { updatedTodo };
   }
 }
