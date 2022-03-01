@@ -18,14 +18,9 @@ export class TodosService {
     return this.todosRepository.save(todo);
   }
 
-  update(todo: Todo) {
+  async update(id: number) {
+    const todo = await this.todosRepository.findOne(id);
     todo.isComplete = !todo.isComplete;
     this.todosRepository.save(todo);
   }
-
-  // async update(id: number) {
-  //   const todo = await this.todosRepository.findOne(id);
-  //   todo.isComplete = !todo.isComplete;
-  //   this.todosRepository.save(todo);
-  // }
 }

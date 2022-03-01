@@ -6,6 +6,7 @@ export const Question5 = () => {
   const api = useContext(ApiContext);
   const [todos, setTodos] = useState([]);
   const [content, setContent] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(async () => {
     const { todos } = await api.get('/todos');
@@ -13,6 +14,13 @@ export const Question5 = () => {
   }, []);
 
   const save = async () => {
+    setErrorMessage('');
+
+    if (content === '') {
+      setErrorMessage("Todo contents can't be empty");
+      return;
+    }
+
     const todo = await api.post('/todos', {
       content,
     });
@@ -38,9 +46,12 @@ export const Question5 = () => {
         >
           SAVE
         </button>
+        <div className="text-red-600 m-2">{errorMessage}</div>
       </div>
       {todos.map((todo) => (
-        <Todo todo={todo} key={todo.id} />
+        <div key={todo.id}>
+          <Todo todo={todo} />
+        </div>
       ))}
     </div>
   );

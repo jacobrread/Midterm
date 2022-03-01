@@ -29,21 +29,9 @@ export class Question5Controller {
     }
   }
 
-  @Put('/todos/update') // Update todo
-  public update(@Param('todo') todo: Todo) {
-    const updatedTodo = this.todosService.update(todo);
+  @Put('/todos/:id') // Update todo
+  public update(@Param('todo') todoId: number) {
+    const updatedTodo = this.todosService.update(todoId);
     return { updatedTodo };
   }
-
-  // @Put('/todos/update') // Update todo
-  // public update(@Param('todo') todoId: string) {
-  //   const todo = this.todosService.update(parseInt(todoId, 10));
-  //   return { todo };
-  // }
-
-  // @Put('/todos/update') // Update todo
-  // public update(@Body() todo: Todo) {
-  //   const updatedTodo = this.todosService.update(todo);
-  //   return { updatedTodo };
-  // }
 }
